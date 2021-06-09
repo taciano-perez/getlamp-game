@@ -1,16 +1,16 @@
 
- 10 REM INIT VARIABLES
+ 10 REM ** INIT VARIABLES **
  15 REM LOCATION DESCRIPTION (LD), LOCATION (L)
  20 DIM LD$ ( 4 ) : DIM LE ( 4, 4 ) 
  25 L=1 
  30 DATA "an empty office. There is a door to the south and a locked door to the east.","the stock room. There is a door to the north."
  32 DATA "a dark room. You cannot see a thing.","the world outside!" 
  40 FOR I=1 TO 4
- 50 READ LD$ ( I ) 
- 60 NEXT I
+ 42 READ LD$ ( I ) 
+ 44 NEXT I
  46 REM LOCATION EXITS (LE)
- 48 REM N(1),S(2),E(3),W(4)
- 50 DATA 0,2,0,0
+ 50 REM N(1),S(2),E(3),W(4)
+ 51 DATA 0,2,0,0
  52 DATA 1,0,0,0
  54 DATA 0,0,0,1
  56 DATA 3,0,0,0
@@ -25,9 +25,10 @@
  76 FOR I=1 TO OC
  78 READ OL ( I ) : READ OD$ ( I )
  80 NEXT I
+ 85 REM ** START GAME **
  90 HOME
  95 PRINT "   *** GET LAMP - A (SHORT) TEXT ADVENTURE ***"
- 100 REM MAIN LOOP
+ 100 REM ** MAIN LOOP **
  105 PRINT ""
  110 PRINT "You are in " ;LD$( L ) 
  115 GOSUB 1100 : REM DISPLAY OBJECTS
@@ -54,7 +55,7 @@
  1046 IF LEFT$ ( IN$, 2 ) = "GO" AND RIGHT$ ( IN$, 4 ) = "WEST" THEN L=LE ( L, 4 )
  1048 IF L = 0 THEN L=BUF : PRINT "You cannot go in that direction."
  1090 RETURN
- 1100 REM *** DISPLAY OBJECTS SUBROUTINE ***
+ 1100 REM *** DISPLAY OBJECTS SUBROUTINE ***list 
  1110 FOR I=1 TO OC
  1112 IF OL ( I ) = L THEN PRINT "You see "; OD$ ( I ) 
  1130 NEXT I
