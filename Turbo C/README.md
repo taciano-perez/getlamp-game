@@ -24,7 +24,7 @@ The steps to install Turbo C with DOSBox can also be found at https://www.youtub
 
 I used some ideas from the Little Cave Adventure tutorial: https://home.hccnet.nl/r.helderman/adventures/htpataic01.html
 
-If you're looking for a neater and more complete implementation of an text adventure in C than my example, the tutorial above is a good next step.
+If you're looking for a neater and more complete implementation of a text adventure in C than my example, the tutorial above is a good next step.
 
 
 
