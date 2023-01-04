@@ -1,4 +1,14 @@
-# Get Lamp - Apple II 6502 Assembly version
+# Get Lamp - Apple IIe 6502C Assembly version
+
+The main game loop lies in `main.s`. Common constants used by all modules are defined in `common.s`.
+
+Generic string manipulation routines can be found in `printstring.s`, `inputstring.s` and `cmpstring.s`.
+
+Data and routines for locations and objects are under `location.s` and `objects.s`.
+
+Most of the game consists in parsing commands, accomplished via `cmdgo.s`, `cmdtake.s`, `cmddrop.s`, `cmdinventory.s`, `cmdunlock.s`, `cmdlight.s`, and `cmdhelp.s`.
+
+The next section lists constants used throughout this implementation.
 
 ## Locations
 
