@@ -13,11 +13,12 @@ The implementations already available are programmed in:
 - Applesoft BASIC
 - Borland Turbo C
 - 6502C Assembly for the Apple IIe
+- Borland Turbo Prolog 2.0
 
 Upcoming implementations are planned in:
 - LISP
 - Smalltalk
-- Prolog
+- Java 1.0
 
 (dialects still TBD)
 
