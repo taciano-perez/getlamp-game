@@ -14,6 +14,7 @@ The implementations already available are programmed in:
 - Borland Turbo C
 - 6502C Assembly for the Apple IIe
 - Borland Turbo Prolog 2.0
+- Inform 7 (contributed by Nate Taylor @nateProjects)
 
 Upcoming implementations are planned in:
 - LISP
