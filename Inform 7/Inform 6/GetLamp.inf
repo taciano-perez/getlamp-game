@@ -1,0 +1,62 @@
+Constant Story "GetLamp";
+
+Include "Parser";
+Include "VerbLib";
+
+Object  anEmptyOffice "An Empty Office"
+ has    light
+ with   description "You are in an empty office. There is a door to the south.",
+ s_to   theStockRoom, 
+ e_to   black_door
+ ;
+
+Object  theStockRoom "The Stock Room"
+ has    light
+ with   description "You are in the stock room. There is a door to the north.",
+ n_to anEmptyOffice;
+
+Object  aWaitingRoom "A Waiting Room"
+ with   description "You are in a waiting room. You see doors leading west and south.",
+ w_to   anEmptyOffice,
+ s_to   theWorldOutside;
+
+Object  theWorldOutside "The World Outside"
+ has light
+ with   description "You are in the world outside!",
+ each_turn [; if (player in theWorldOutside) deadflag = 2; ],
+ n_to   aWaitingRoom;
+
+Object door_key "a key" theStockRoom
+ with name 'key',
+ has ;
+
+Object black_door "black door" anEmptyOffice
+ with name "door",
+ description "A black door.",
+  when_closed "A locked door bars your way to a room east.",
+  when_open "An open door leads east.",
+ after[;
+  unlock: give self open;
+ ],
+ door_to aWaitingRoom,
+ door_dir e_to,
+ with_key door_key,
+ has door lockable openable locked static;
+
+Object a_lamp "a lamp" anEmptyOffice
+ with name 'lamp',
+after [;
+           SwitchOn: give self light;
+           SwitchOff: give self ~light;
+       ],
+ has switchable;
+
+[ Initialise;
+    location = anEmptyOffice;
+];
+
+[ DeadMessage;
+if (deadflag == 2) print "Congratulations, you have won the game!";
+];
+
+Include "Grammar";
