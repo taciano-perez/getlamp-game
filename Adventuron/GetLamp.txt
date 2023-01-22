@@ -1,0 +1,66 @@
+start_at = anEmptyOffice
+
+strings {
+   dark_room : string "a dark room. You cannot see a thing."; // default
+}
+
+locations {
+   anEmptyOffice   : location "You are in an empty office. There is a door to the south, and a locked door to the east.";
+   theStockRoom    : location "You are in the stock room. There is a door to the north." ;
+   aWaitingRoom    : location "You are in {dark_room}" ;
+   theWorldOutside : location "You are in the world outside!" ;
+}
+
+connections {
+   from, direction, to = [
+      anEmptyOffice,    south, theStockRoom,
+      anEmptyOffice,    east, aWaitingRoom, 
+      aWaitingRoom,     south, theWorldOutside, 
+   ]
+}
+
+objects {
+   key  : object  "a key" at="theStockRoom";
+   lamp : object  "a lamp" at="anEmptyOffice";
+}
+
+booleans {
+   lamp_lit : boolean "false";
+}
+
+on_startup {
+    : print "GetLamp by Taciano Perez";
+}
+
+on_command {
+   : match "light lamp"  {
+      : if (is_carried "lamp") {
+         : print "Now you have a lit lamp." ;
+         : set_true "lamp_lit" ;
+         : set_string var="dark_room" text="You are in a waiting room. You see doors leading west and south." ;
+      }
+      : else {
+         : print "You don't have a lamp." ; 
+         }
+   }
+}
+
+on_describe {
+   : if (is_at "theWorldOutside" ) {
+      : print "Congratulations, you have won the game!" ;
+      : win_game ;
+   }
+}
+
+barriers {
+   black_door : door {
+      from  = anEmptyOffice
+      to    = aWaitingRoom
+      key   = key
+   }
+   lamp_block : block {
+      block_when_not = lamp_lit
+      location       = theWorldOutside
+      message        = "You cannot go in that direction."
+   }
+}

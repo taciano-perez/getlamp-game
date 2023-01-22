@@ -26,7 +26,7 @@ Object  theWorldOutside "The World Outside"
  each_turn [; if (player in theWorldOutside) deadflag = 2; ],
  n_to   aWaitingRoom;
 
-Object door_key "a key" theStockRoom
+Object door_key "key" theStockRoom
  with name 'key',
  has ;
 
@@ -43,7 +43,7 @@ Object black_door "black door" anEmptyOffice
  with_key door_key,
  has door lockable openable locked static;
 
-Object a_lamp "a lamp" anEmptyOffice
+Object a_lamp "lamp" anEmptyOffice
  with name 'lamp',
 after [;
            SwitchOn: give self light;
