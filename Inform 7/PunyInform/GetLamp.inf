@@ -2,8 +2,8 @@ Constant Story      "Get Lamp";
 Constant Headline   "^A sample game which uses PunyInform.^";
 
 Constant STATUSLINE_SCORE; Statusline score;
-Constant OPTIONAL_SL_NO_SCORE;
 Constant OPTIONAL_SL_NO_MOVES;
+Constant NO_SCORE;
 
 Constant INITIAL_LOCATION_VALUE = anEmptyOffice;
 
