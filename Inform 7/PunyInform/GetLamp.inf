@@ -1,11 +1,18 @@
+Constant Story      "Get Lamp";
+Constant Headline   "^A sample game which uses PunyInform.^";
+
+Constant STATUSLINE_SCORE; Statusline score;
 Constant OPTIONAL_SL_NO_SCORE;
 Constant OPTIONAL_SL_NO_MOVES;
 
+Constant INITIAL_LOCATION_VALUE = anEmptyOffice;
+
+[ DeathMessage;
+    print "Congratulations, you have won the game!";
+];
+
 Include "globals.h";
 Include "puny.h";
-
-Constant Story      "Get Lamp";
-Constant Headline   "^A sample game which uses PunyInform.^";
 
 Object  anEmptyOffice "An Empty Office"
     has    light
@@ -27,7 +34,7 @@ Object  aWaitingRoom "A Waiting Room"
 Object  theWorldOutside "The World Outside"
     has light
     with   description "You are in the world outside!",
- each_turn [; if (player in theWorldOutside) deadflag = 2; ],
+ each_turn [; if (player in theWorldOutside) deadflag = GS_DEATHMESSAGE; ],
     n_to   aWaitingRoom;
 
 Object door_key "key" theStockRoom
@@ -39,7 +46,7 @@ Object black_door "black door" anEmptyOffice
     when_closed "A locked door bars your way to a room east.",
     when_open "An open door leads east.",
     after[;
-        unlock: give self open;
+        Unlock: give self open;
     ],
     door_to aWaitingRoom,
     door_dir e_to,
@@ -55,10 +62,6 @@ Object a_lamp "lamp" anEmptyOffice
      has switchable;
 
 [ Initialise;
-    location = anEmptyOffice;
     print "^^GetLamp is a simple text adventure by Taciano Perez.^^";
 ];
 
-[ DeadMessage;
-    if (deadflag == 2) print "Congratulations, you have won the game!";
-];
