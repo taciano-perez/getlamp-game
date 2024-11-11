@@ -34,7 +34,7 @@ Object  aWaitingRoom "A Waiting Room"
 Object  theWorldOutside "The World Outside"
     has light
     with   description "You are in the world outside!",
- each_turn [; if (player in theWorldOutside) deadflag = GS_DEATHMESSAGE; ],
+ each_turn [; deadflag = GS_DEATHMESSAGE; ],
     n_to   aWaitingRoom;
 
 Object door_key "key" theStockRoom
