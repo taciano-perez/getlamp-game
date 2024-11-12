@@ -15,7 +15,7 @@ Include "globals.h";
 Include "puny.h";
 
 Object anEmptyOffice "An Empty Office"
-    with
+	with
 		description "You are in an empty office. There is a door to the south.",
 		s_to theStockRoom, 
 		e_to black_door,
